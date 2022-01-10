@@ -1,0 +1,138 @@
+:root {
+  --text-color: black;
+  --background-color: white;
+  --accent-color: #d49466;
+}
+body {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+.NavBar {
+  box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
+  background-color: var(--background-color);
+}
+.MainBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px 430px;
+  height: 50px;
+}
+.MainBar__logo {
+  align-items: center;
+}
+.MainBar__logo img {
+  max-width: 180px;
+  max-height: 20px;
+  padding: 8px 12px;
+}
+.MainBar__logo .hamburger {
+  width: 17px;
+  height: 14px;
+}
+.MainBar__logo .wanted {
+  height: 17px;
+}
+.MainBar__class {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+.MainBar__class li {
+  position: relative;
+  vertical-align: middle;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 600;
+  padding: 15px;
+  display: inline-block;
+}
+.MainBar__class li a > span,
+.MainBar__class li a > em {
+  position: absolute;
+  top: 10px;
+  right: -7px;
+  pointer-events: none;
+}
+.MainBar__icons {
+  padding: 9px 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.MainBar__icons ul {
+  height: 100%;
+  list-style: none;
+  padding-left: 0;
+  align-items: center;
+}
+.MainBar__icons > ul li {
+  margin: 0;
+  padding: 0;
+  position: relative;
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+.MainBar__icons > ul li button {
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  border: none;
+  color: var(--text-color);
+  padding: 10px;
+}
+.MainBar__icons > ul li .MainBar__icons__search {
+  position: relative;
+  margin: 5px 0px 5px 0px;
+}
+.MainBar__icons > ul li .MainBar__icons__notify {
+  position: relative;
+  margin: 5px 0px 5px 0px;
+}
+.MainBar__icons > ul li .Badge {
+  background-color: rgb(51, 102, 255);
+  width: 13px;
+  height: 13px;
+}
+.MainBar__icons .avatarBorder {
+  border: 1px solid #e1e2e3;
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  display: flex;
+}
+.MainBar__icons .profileButton img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-position: 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.MainBar__icons .leftDivision {
+  display: inline-flex;
+}
+.MainBar__icons .dashboardButton {
+  font-size: 13px;
+  color: #666;
+  line-height: 30px;
+  height: 30px;
+  border: 1px solid #e1e2e3;
+  border-radius: 15px;
+  padding: 0 10px;
+  margin: 10px 10px 10px 15px;
+  font-weight: 400;
+}
