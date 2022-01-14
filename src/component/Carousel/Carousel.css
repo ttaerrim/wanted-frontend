@@ -1,0 +1,132 @@
+.container {
+  width: 100%;
+  /* height: 15em; */
+  overflow: hidden;
+  position: relative;
+  margin-top: 30px;
+}
+
+.slideWrap {
+  position: relative;
+  width: 1060px;
+  height: 300px;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+.slideBox {
+  width: 100%;
+  margin: auto;
+  /* overflow-x: hidden; */
+}
+.slideContent {
+  display: flex;
+  float: left;
+  width: 1060px;
+}
+.slideImage {
+  border-radius: 4px;
+  float: left;
+}
+
+.slideInformation {
+  position: absolute;
+  bottom: 60px;
+  width: 330px;
+  height: 146px;
+  border-radius: 4px;
+  background-color: #fff;
+  /* opacity: 0; */
+  text-align: left;
+  left: 34px;
+}
+.slideInformation > h2 {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 20px;
+  line-height: 1.5;
+
+  margin-bottom: 0;
+  margin-top: 20px;
+  font-weight: 700;
+  color: #333;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.slideInformation > h3 {
+  margin: 0 20px;
+  height: 44px;
+  font-size: 14px;
+  line-height: 1.64;
+  color: #333;
+
+  font-weight: 500;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.slideInformation > hr {
+  height: 1px;
+  margin: 0;
+  border: none;
+  flex-shrink: 0;
+  background-color: #ececec;
+}
+.infoDirection {
+  margin: 6px 0 0 13px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  color: #36f;
+}
+
+.buttonGo {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  min-width: 64px;
+  box-sizing: border-box;
+  border-radius: 25px;
+  cursor: pointer;
+}
+.buttonA {
+  height: 40px;
+  padding: 6px 8px;
+}
+.buttonText {
+  display: inherit;
+}
+.buttonSvg {
+  display: flex;
+}
+.svgIcon {
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  fill: currentColor;
+  user-select: none;
+  flex-shrink: 0;
+  font-size: inherit;
+}
+.sliderButton {
+  justify-content: center;
+
+  width: 30px;
+  height: 60px;
+  opacity: 0.5;
+  border-radius: 15px;
+  background-color: #fff;
+  font-size: 16px;
+}
+.sliderButton.Left {
+  position: absolute;
+  top: 120px;
+  left: 120px;
+}
+.sliderButton.Right {
+  position: absolute;
+  top: 120px;
+  right: 120px;
+}
