@@ -1,11 +1,20 @@
+.Main {
+  background-color: #fff;
+  padding-top: 25px;
+}
 .container {
   width: 100%;
   /* height: 15em; */
   overflow: hidden;
   position: relative;
-  margin-top: 30px;
 }
-
+.slider {
+  padding: 0px 50px;
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0;
+}
 .slideWrap {
   position: relative;
   width: 1060px;
@@ -23,6 +32,9 @@
   float: left;
   width: 1060px;
 }
+.slideContent div {
+  padding: 0 10px;
+}
 .slideImage {
   border-radius: 4px;
   float: left;
@@ -30,7 +42,7 @@
 
 .slideInformation {
   position: absolute;
-  bottom: 60px;
+  bottom: 30px;
   width: 330px;
   height: 146px;
   border-radius: 4px;
