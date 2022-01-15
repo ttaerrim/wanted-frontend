@@ -11,8 +11,10 @@ a {
   color: var(--text-color);
 }
 .NavBox {
-  box-shadow: 0 1px 0 0 rgb(0 0 0 / 10%);
+  box-shadow: 0 1px 0 0 rgb(0 0 0/10%);
   background-color: var(--background-color);
+  z-index: 100;
+  position: relative;
 }
 .NavBar {
   position: relative;
