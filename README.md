@@ -1,4 +1,4 @@
-[https://inspiring-colden-d20169.netlify.app/]
+Open [Netlify ](https://inspiring-colden-d20169.netlify.app/)
 
 # Getting Started with Create React App
 
