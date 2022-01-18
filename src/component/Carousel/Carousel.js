@@ -29,21 +29,21 @@ const Carousel = () => {
   });
   const [imgWidth, setImgWidth] = useState(0);
   const [imgsState, setImgsState] = useState([]);
-  const [imgsDiv, setImgsDiv] = useState();
+
   const slideRef = useRef(null);
   const imgRef = useRef();
   let threeTimesEvents = [];
 
-  const SLIDE_MARGIN = 0;
-  //   const SLIDE_WIDTH = ; imgWidth로!
+  const SLIDE_MARGIN = 24;
   const MAX_SLIDES = 11;
   const TOTAL_SLIDES = MAX_SLIDES * 3;
 
   const setInitialPosition = () => {
-    slideRef.current.style.transform = `translateX(0px)`;
-    // `translateX(-${
-    //   imgWidth * MAX_SLIDES
-    // }px)`;
+    imgWidth === undefined
+      ? (slideRef.current.style.transform = `translateX(0px)`)
+      : (slideRef.current.style.transform = `translateX(-${
+          (imgWidth + SLIDE_MARGIN) * slideState.number
+        }px)`);
   };
 
   const loadEvents = async () => {
@@ -105,12 +105,14 @@ const Carousel = () => {
     setImgWidth(imgRef.current?.width);
     setInitialPosition();
     slideRef.current.style.transform = `translateX(-${
-      imgWidth * slideState.number
+      (imgWidth + SLIDE_MARGIN) * slideState.number
     }px)`;
     slideRef.current.style.transition = slideState.hasMotion
       ? "all 500ms ease 0s"
       : "";
-    console.log(slideState);
+
+    console.log(imgWidth, SLIDE_MARGIN, slideState.number);
+    console.log((imgWidth + SLIDE_MARGIN) * slideState.number);
   }, [slideState, imgWidth]);
 
   return (
@@ -119,14 +121,17 @@ const Carousel = () => {
         <div className="slideWrap">
           <div className="slideBox">
             <div className="slideContent" ref={slideRef}>
-              {imgsState.map((url) => {
+              {imgsState.map((url, index) => {
                 return (
-                  <img
-                    className="slideImage"
-                    src={url}
-                    alt="slide image"
-                    ref={imgRef}
-                  />
+                  <div className="imageDiv">
+                    <img
+                      className="slideImage"
+                      src={url}
+                      alt="slide image"
+                      ref={imgRef}
+                      key={index}
+                    />
+                  </div>
                 );
               })}
             </div>
