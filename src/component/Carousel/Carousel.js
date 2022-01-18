@@ -110,7 +110,7 @@ const Carousel = () => {
 
     console.log(imgWidth, SLIDE_MARGIN, slideState.number);
     console.log((imgWidth + SLIDE_MARGIN) * slideState.number);
-  }, [slideState, imgWidth]);
+  }, [slideState, imgWidth, loadEvents, setInitialPosition]);
 
   return (
     <main className="Main">
