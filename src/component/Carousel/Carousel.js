@@ -1,8 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Carousel.css";
 
-import styled from "styled-components";
-
 const Carousel = () => {
   const imagesList = [
     "https://static.wanted.co.kr/images/banners/1453/7a978579.jpg",
@@ -36,7 +34,6 @@ const Carousel = () => {
 
   const SLIDE_MARGIN = 24;
   const MAX_SLIDES = 11;
-  const TOTAL_SLIDES = MAX_SLIDES * 3;
 
   const setInitialPosition = () => {
     imgWidth === undefined
@@ -127,7 +124,7 @@ const Carousel = () => {
                     <img
                       className="slideImage"
                       src={url}
-                      alt="slide image"
+                      alt="slide"
                       ref={imgRef}
                       key={index}
                     />
