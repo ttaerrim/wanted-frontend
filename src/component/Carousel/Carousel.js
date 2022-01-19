@@ -3,7 +3,7 @@ import "./Carousel.css";
 
 const Carousel = () => {
   const imagesList = [
-    "https://static.wanted.co.kr/images/banners/1453/7a978579.jpg",
+    "https://static.wanted.co.kr/images/banners/1486/fba2df30.jpg",
     "https://static.wanted.co.kr/images/banners/1435/6cdcea85.jpg",
     "https://static.wanted.co.kr/images/banners/1460/619f3af7.jpg",
     "https://static.wanted.co.kr/images/banners/1434/fdbbcb06.jpg",
@@ -33,7 +33,6 @@ const Carousel = () => {
   let threeTimesEvents = [];
 
   const SLIDE_MARGIN = 24;
-  const MAX_SLIDES = 11;
 
   const setInitialPosition = () => {
     imgWidth === undefined
@@ -110,7 +109,7 @@ const Carousel = () => {
 
     console.log(imgWidth, SLIDE_MARGIN, slideState.number);
     console.log((imgWidth + SLIDE_MARGIN) * slideState.number);
-  }, [slideState, imgWidth, loadEvents, setInitialPosition]);
+  }, [slideState, imgWidth]);
 
   return (
     <main className="Main">
