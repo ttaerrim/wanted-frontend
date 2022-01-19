@@ -36,7 +36,9 @@ const Carousel = () => {
 
   const setInitialPosition = () => {
     imgWidth === undefined
-      ? (slideRef.current.style.transform = `translateX(0px)`)
+      ? (slideRef.current.style.transform = `translateX(-${
+          (1060 + SLIDE_MARGIN) * slideState.number
+        }px)`)
       : (slideRef.current.style.transform = `translateX(-${
           (imgWidth + SLIDE_MARGIN) * slideState.number
         }px)`);
