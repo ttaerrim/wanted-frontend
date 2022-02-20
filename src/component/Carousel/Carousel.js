@@ -1,26 +1,14 @@
 import React, { useEffect, useState, useRef } from "react";
 import "./Carousel.css";
-
+import data from "../../assets/data.json";
 const Carousel = () => {
-  const imagesList = [
-    "https://static.wanted.co.kr/images/banners/1486/fba2df30.jpg",
-    "https://static.wanted.co.kr/images/banners/1435/6cdcea85.jpg",
-    "https://static.wanted.co.kr/images/banners/1460/619f3af7.jpg",
-    "https://static.wanted.co.kr/images/banners/1434/fdbbcb06.jpg",
-    "https://static.wanted.co.kr/images/banners/1451/725c6862.jpg",
-    "https://static.wanted.co.kr/images/banners/1454/e504b006.jpg",
-    "https://static.wanted.co.kr/images/banners/1473/41f7b36e.jpg",
-    "https://static.wanted.co.kr/images/banners/1436/e2dd9445.jpg",
-    "https://static.wanted.co.kr/images/banners/1438/015566ac.jpg",
-    "https://static.wanted.co.kr/images/banners/1452/be4ec643.jpg",
-    "https://static.wanted.co.kr/images/banners/1468/3df61cbc.jpg",
-  ];
+  const carouselData = data.data;
 
-  const NEXT_END = 31;
-  const NEXT_START = 23;
-  const PREV_END = 9;
+  const NEXT_END = carouselData.length * 3 - 2;
+  const NEXT_START = carouselData.length * 2 + 1;
+  const PREV_END = carouselData.length - 2;
   const PREV_START = 1;
-  const START = 11;
+  const START = carouselData.length;
 
   const [slideState, setSlideState] = useState({
     number: START,
@@ -45,7 +33,11 @@ const Carousel = () => {
   };
 
   const loadEvents = async () => {
-    threeTimesEvents = await [...imagesList, ...imagesList, ...imagesList];
+    threeTimesEvents = await [
+      ...carouselData,
+      ...carouselData,
+      ...carouselData,
+    ];
     await setImgsState(threeTimesEvents);
   };
 
@@ -108,9 +100,6 @@ const Carousel = () => {
     slideRef.current.style.transition = slideState.hasMotion
       ? "all 500ms ease 0s"
       : "";
-
-    console.log(imgWidth, SLIDE_MARGIN, slideState.number);
-    console.log((imgWidth + SLIDE_MARGIN) * slideState.number);
   }, [slideState, imgWidth]);
 
   return (
@@ -119,15 +108,14 @@ const Carousel = () => {
         <div className="slideWrap">
           <div className="slideBox">
             <div className="slideContent" ref={slideRef}>
-              {imgsState.map((url, index) => {
+              {imgsState.map((data, index) => {
                 return (
-                  <div className="imageDiv">
+                  <div key={index} id={data.id} className="imageDiv">
                     <img
                       className="slideImage"
-                      src={url}
+                      src={data.image}
                       alt="slide"
                       ref={imgRef}
-                      key={index}
                     />
                   </div>
                 );

@@ -1,0 +1,52 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "어서 와, 리더는 처음이지?",
+      "content": "갑자기 팀장이 된 당신에게!",
+      "image": "https://static.wanted.co.kr/images/banners/1529/cc187e76.jpg"
+    },
+    {
+      "id": 2,
+      "title": "우아하게 성장하는 형제들",
+      "content": "[무료] 개발, IT 영상을 지금 시청하세요!",
+      "image": "https://static.wanted.co.kr/images/banners/1538/407ee505.jpg"
+    },
+    {
+      "id": 3,
+      "title": "성장하는 디자이너의 비결?",
+      "content": "사이드 프로젝트로 성장하기",
+      "image": "https://static.wanted.co.kr/images/banners/1530/bd87293c.jpg"
+    },
+    {
+      "id": 4,
+      "title": "그것이 알고싶다!",
+      "content": "스타트업 스톡옵션의 모든 것",
+      "image": "https://static.wanted.co.kr/images/banners/1541/c957d1fd.jpg"
+    },
+    {
+      "id": 5,
+      "title": "디프만 11기 참가자 모집!",
+      "content": "'가슴속 3천원' 같은 서비스를 만들고 싶다면?",
+      "image": "https://static.wanted.co.kr/images/banners/1535/2b35627c.jpg"
+    },
+    {
+      "id": 6,
+      "title": "야 너도 OOO갈 수 있어!",
+      "content": "'네카라쿠배당토'는 누가 다닐까?",
+      "image": "https://static.wanted.co.kr/images/banners/1537/6e3279f2.jpg"
+    },
+    {
+      "id": 7,
+      "title": "우리도 카카오에 갈 수 있을까?",
+      "content": "[무료] 카카오 재직자들의 영상 무료 공개!",
+      "image": "https://static.wanted.co.kr/images/banners/1539/669d6e34.jpg"
+    },
+    {
+      "id": 8,
+      "title": "브랜디 기술조직 채용 설명회",
+      "content": "일 잘하는 브랜디 개발자의 모든 것!",
+      "image": "https://static.wanted.co.kr/images/banners/1534/3d65239e.jpg"
+    }
+  ]
+}
