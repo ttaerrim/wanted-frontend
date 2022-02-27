@@ -192,7 +192,7 @@ const Navigation = () => {
                 </button>
               </li>
               <li className="mdMoreVisible leftDivision">
-                <a class="dashboardButton" href="#">
+                <a className="dashboardButton" href="#">
                   기업 서비스
                 </a>
               </li>

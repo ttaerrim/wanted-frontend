@@ -22,7 +22,8 @@ const Carousel = () => {
 
   const SLIDE_MARGIN = 24;
 
-  // currentslide = (slideState.number % carouselData.length) + 1
+  const [isMouseOn, setIsMouseOn] = useState(false);
+  const [isButtonActive, setIsButtonActive] = useState(true);
 
   const setInitialPosition = () => {
     imgWidth === undefined
@@ -43,22 +44,35 @@ const Carousel = () => {
     await setImgsState(threeTimesEvents);
   };
 
+  const clickRight = () => {
+    if (isButtonActive) {
+      handleBannerRight();
+    }
+    setIsButtonActive(false);
+  };
   const handleBannerRight = () => {
     if (
       slideState.number === NEXT_END &&
-      slideState.memo.number === NEXT_END - 1
+      slideState.memo?.number === NEXT_END - 1
     ) {
       moveTo(PREV_END, false);
       slideAfterMove(PREV_END + 1, true);
     } else if (
       slideState.number === NEXT_START &&
-      slideState.memo.number === NEXT_START - 1
+      slideState.memo?.number === NEXT_START - 1
     ) {
       moveTo(PREV_START, false);
       slideAfterMove(PREV_START + 1, true);
     } else {
       moveTo(slideState.number + 1, true);
     }
+  };
+
+  const clickLeft = () => {
+    if (isButtonActive) {
+      handleBannerLeft();
+    }
+    setIsButtonActive(false);
   };
 
   const handleBannerLeft = () => {
@@ -78,7 +92,6 @@ const Carousel = () => {
       moveTo(slideState.number - 1, true);
     }
   };
-
   const moveTo = (setNumber, setMotion) => {
     setSlideState({
       memo: slideState,
@@ -92,6 +105,7 @@ const Carousel = () => {
       moveTo(setNumber, setMotion);
     }, 50);
   };
+
   useEffect(() => {
     loadEvents();
     setImgWidth(imgRef.current?.width);
@@ -102,12 +116,33 @@ const Carousel = () => {
     slideRef.current.style.transition = slideState.hasMotion
       ? "all 500ms ease 0s"
       : "";
-    setTimeout(handleBannerRight, 4000);
   }, [slideState, imgWidth]);
+
+  useEffect(() => {
+    if (!isButtonActive) {
+      setTimeout(() => {
+        setIsButtonActive(true);
+      }, 500);
+    }
+  }, [isButtonActive]);
+
+  useEffect(() => {
+    let nIntervId;
+    if (!isMouseOn) {
+      nIntervId = setInterval(handleBannerRight, 4000);
+    }
+    return () => {
+      clearInterval(nIntervId);
+    };
+  }, [slideState, isMouseOn]);
 
   return (
     <main className="Main">
-      <div className="container">
+      <div
+        className="container"
+        onMouseOver={() => setIsMouseOn(true)}
+        onMouseLeave={() => setIsMouseOn(false)}
+      >
         <div className="slideWrap">
           <div className="slideBox">
             <div className="slideContent" ref={slideRef}>
@@ -123,7 +158,9 @@ const Carousel = () => {
                     <div
                       className={
                         (slideState.number % carouselData.length) + 1 !==
-                          data.id && "unactive-slideImage"
+                        data.id
+                          ? "unactive-slideImage"
+                          : null
                       }
                     />
 
@@ -142,7 +179,7 @@ const Carousel = () => {
                         <span>
                           바로가기
                           <svg
-                            class="SvgIcon_SvgIcon__root__svg__DKYBi"
+                            className="SvgIcon_SvgIcon__root__svg__DKYBi"
                             viewBox="0 0 18 18"
                           >
                             <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
@@ -157,7 +194,7 @@ const Carousel = () => {
           </div>
         </div>
 
-        <button className="sliderButton Left" onClick={handleBannerLeft}>
+        <button className="sliderButton Left" onClick={clickLeft}>
           <span>
             <svg
               className="SvgIcon_SvgIcon__root__svg__DKYBi"
@@ -168,7 +205,7 @@ const Carousel = () => {
           </span>
         </button>
 
-        <button className="sliderButton Right" onClick={handleBannerRight}>
+        <button className="sliderButton Right" onClick={clickRight}>
           <span>
             <svg
               className="SvgIcon_SvgIcon__root__svg__DKYBi"
