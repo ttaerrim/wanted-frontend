@@ -1,6 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import "./Carousel.css";
-import data from "../../assets/data.json";
+import styles from "./Carousel.module.css";
+import data from "assets/data.json";
+import { LeftButton } from "assets/LeftButton";
+import { RightButton } from "assets/RightButton";
+
 const Carousel = () => {
   const carouselData = data.data;
 
@@ -106,6 +109,34 @@ const Carousel = () => {
     }, 50);
   };
 
+  const [mouseDownClientX, setMouseDownClientX] = useState(0);
+  const [mouseUpClientX, setMouseUpClientX] = useState(0);
+  const [cursorOn, setCursorOn] = useState(false);
+
+  const onMouseDown = (e) => {
+    e.preventDefault();
+    setMouseDownClientX(e.clientX);
+    setCursorOn(true);
+  };
+
+  const onMouseUp = (e) => {
+    e.preventDefault();
+    setMouseUpClientX(e.clientX);
+    setCursorOn(false);
+  };
+
+  useEffect(() => {
+    const dragSpace = Math.abs(mouseDownClientX - mouseUpClientX);
+
+    if (mouseDownClientX !== 0) {
+      if (mouseUpClientX < mouseDownClientX && dragSpace > 100) {
+        handleBannerRight();
+      } else if (mouseUpClientX > mouseDownClientX && dragSpace > 100) {
+        handleBannerLeft();
+      }
+    }
+  }, [mouseUpClientX]);
+
   useEffect(() => {
     loadEvents();
     setImgWidth(imgRef.current?.width);
@@ -137,30 +168,31 @@ const Carousel = () => {
   }, [slideState, isMouseOn]);
 
   return (
-    <main className="Main">
+    <main className={styles.Main}>
       <div
-        className="container"
+        className={styles.container}
         onMouseOver={() => setIsMouseOn(true)}
         onMouseLeave={() => setIsMouseOn(false)}
+        onMouseDown={onMouseDown}
+        onMouseUp={onMouseUp}
       >
-        <div className="slideWrap">
-          <div className="slideBox">
-            <div className="slideContent" ref={slideRef}>
+        <div className={styles.slideWrap}>
+          <div className={styles.slideBox}>
+            <div className={styles.slideContent} ref={slideRef}>
               {imgsState.map((data, index) => {
                 return (
-                  <div key={index} id={data.id} className="imageDiv">
+                  <div key={index} id={data.id} className={styles.imageDiv}>
                     <img
-                      className="slideImage"
+                      className={styles.slideImage}
                       src={data.image}
                       alt="slide"
                       ref={imgRef}
                     />
+
                     <div
                       className={
                         (slideState.number % carouselData.length) + 1 !==
-                        data.id
-                          ? "unactive-slideImage"
-                          : null
+                          data.id && `${styles["unactive-slideImage"]}`
                       }
                     />
 
@@ -168,8 +200,8 @@ const Carousel = () => {
                       className={
                         (slideState.number % carouselData.length) + 1 ===
                         data.id
-                          ? "active-infomation"
-                          : "infomation"
+                          ? `${styles["active-infomation"]}`
+                          : `${styles.infomation}`
                       }
                     >
                       <h2>{data.title}</h2>
@@ -194,25 +226,21 @@ const Carousel = () => {
           </div>
         </div>
 
-        <button className="sliderButton Left" onClick={clickLeft}>
+        <button
+          className={`${styles.sliderButton} ${styles.Left}`}
+          onClick={clickLeft}
+        >
           <span>
-            <svg
-              className="SvgIcon_SvgIcon__root__svg__DKYBi"
-              viewBox="0 0 18 18"
-            >
-              <path d="m6.045 9 5.978-5.977a.563.563 0 1 0-.796-.796L4.852 8.602a.562.562 0 0 0 0 .796l6.375 6.375a.563.563 0 0 0 .796-.796L6.045 9z"></path>
-            </svg>
+            <LeftButton />
           </span>
         </button>
 
-        <button className="sliderButton Right" onClick={clickRight}>
+        <button
+          className={`${styles.sliderButton} ${styles.Right}`}
+          onClick={clickRight}
+        >
           <span>
-            <svg
-              className="SvgIcon_SvgIcon__root__svg__DKYBi"
-              viewBox="0 0 18 18"
-            >
-              <path d="m11.955 9-5.978 5.977a.563.563 0 0 0 .796.796l6.375-6.375a.563.563 0 0 0 0-.796L6.773 2.227a.562.562 0 1 0-.796.796L11.955 9z"></path>
-            </svg>
+            <RightButton />
           </span>
         </button>
       </div>

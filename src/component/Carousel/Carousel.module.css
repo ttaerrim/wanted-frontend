@@ -7,6 +7,11 @@
   /* height: 15em; */
   overflow: hidden;
   position: relative;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .slider {
   padding: 0px 50px;
@@ -23,14 +28,11 @@
   padding-bottom: 30px;
 }
 .slideBox {
-  /* width: 100%; */
   margin: auto;
-  /* overflow-x: hidden; */
 }
 .slideContent {
   display: flex;
   float: left;
-  /* width: 1060px; */
 }
 .slideContent .imageDiv {
   padding: 0 12px;
@@ -207,16 +209,20 @@
   font-size: inherit;
 }
 .sliderButton {
+  display: flex;
   justify-content: center;
-
+  align-items: center;
   width: 30px;
   height: 60px;
   opacity: 0.5;
   border-radius: 15px;
   background-color: #fff;
-  font-size: 16px;
+  font-size: 10px;
   cursor: pointer;
   z-index: 100;
+}
+.sliderButton svg {
+  width: 16px;
 }
 .sliderButton.Left {
   position: absolute;
