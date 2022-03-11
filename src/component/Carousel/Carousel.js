@@ -24,7 +24,7 @@ const Carousel = () => {
   let threeTimesEvents = [];
 
   const SLIDE_MARGIN = 24;
-
+  console.log();
   const [isMouseOn, setIsMouseOn] = useState(false);
   const [isButtonActive, setIsButtonActive] = useState(true);
 
@@ -125,6 +125,8 @@ const Carousel = () => {
     setCursorOn(false);
   };
 
+  // useEffect(() => {}, [window.innerWidth]);
+
   useEffect(() => {
     const dragSpace = Math.abs(mouseDownClientX - mouseUpClientX);
 
@@ -182,21 +184,23 @@ const Carousel = () => {
               {imgsState.map((data, index) => {
                 return (
                   <div key={index} id={data.id} className={styles.imageDiv}>
-                    <img
-                      className={styles.slideImage}
-                      src={data.image}
-                      alt="slide"
-                      ref={imgRef}
-                    />
+                    <div className={styles.imageContainer}>
+                      <img
+                        className={styles.slideImage}
+                        src={data.image}
+                        alt="slide"
+                        ref={imgRef}
+                      />
 
-                    <div
-                      className={
-                        (slideState.number % carouselData.length) + 1 !==
-                        data.id
-                          ? `${styles["unactive-slideImage"]}`
-                          : undefined
-                      }
-                    />
+                      <div
+                        className={
+                          (slideState.number % carouselData.length) + 1 !==
+                          data.id
+                            ? `${styles["unactive-slideImage"]}`
+                            : undefined
+                        }
+                      />
+                    </div>
 
                     <div
                       className={

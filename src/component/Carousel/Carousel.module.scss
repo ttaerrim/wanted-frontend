@@ -1,3 +1,11 @@
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .Main {
   background-color: #fff;
   padding-top: 25px;
@@ -22,7 +30,7 @@
 }
 .slideWrap {
   position: relative;
-  width: 1060px;
+  width: 1084px;
   height: 300px;
   margin: 0 auto;
   padding-bottom: 30px;
@@ -36,83 +44,26 @@
   .imageDiv {
     padding: 0 12px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    .imageContainer {
+      position: relative;
 
-    .active-infomation {
-      position: absolute;
-      background-color: #fff;
-      border-radius: 5px;
-      width: 330px;
-      height: 146px;
-      left: 34px;
-      bottom: 25px;
-      text-align: left;
-
-      animation: fadein 0.4s ease-in-out;
-      opacity: 1;
-    }
-
-    .active-infomation {
-      h2 {
-        margin: 20px 20px 0 20px;
-        font-size: 20px;
-        line-height: 1.5;
-        font-weight: 700;
-        color: #333;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
-      h3 {
-        font-weight: 500;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        margin: 0 20px;
-        height: 44px;
-        font-size: 14px;
-        line-height: 1.64;
-        color: #333;
-      }
-
-      hr {
-        height: 1px;
-        margin: 0 0 15px 0;
-        border: none;
-        flex-shrink: 0;
-        background-color: #ececec;
-      }
-
-      a {
-        span {
-          font-size: 14px;
-          font-weight: 700;
-          line-height: 1;
-          color: #36f;
-          padding: 6px 8px;
-          margin-top: 6px;
-          margin: 6px 0 0 13px;
-          display: flex;
-          align-content: center;
-        }
-        svg {
-          width: 15px;
-          height: 15px;
-          margin-left: 5px;
-          color: lightgray;
-        }
+      .unactive-slideImage {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 4px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
       }
     }
     .infomation {
       display: none;
     }
-  }
-}
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
   }
 }
 
@@ -122,15 +73,6 @@
   float: left;
   object-fit: cover;
   position: relative;
-}
-.unactive-slideImage {
-  background-color: rgba(0, 0, 0, 0.5);
-  border-radius: 4px;
-  position: absolute;
-  top: 0;
-  left: 11px;
-  width: 98%;
-  height: 100%;
 }
 
 .slideInformation {
@@ -241,41 +183,139 @@
 .sliderButton.Right {
   position: absolute;
   top: 120px;
-  right: calc((100% - 1240px) / 2);
+  right: calc((100% - 1200px) / 2);
 }
 
 @media screen and (min-width: 1200px) {
+  .active-infomation {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 5px;
+    width: 330px;
+    height: 146px;
+    left: 34px;
+    bottom: 25px;
+    text-align: left;
+
+    animation: fadein 0.4s ease-in-out;
+    opacity: 1;
+
+    h2 {
+      margin: 20px 20px 0 20px;
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: 700;
+      color: #333;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    h3 {
+      font-weight: 500;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin: 0 20px;
+      height: 44px;
+      font-size: 14px;
+      line-height: 1.64;
+      color: #333;
+    }
+
+    hr {
+      height: 1px;
+      margin: 0 0 15px 0;
+      border: none;
+      flex-shrink: 0;
+      background-color: #ececec;
+    }
+
+    a {
+      span {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        color: #36f;
+        padding: 6px 8px;
+        margin-top: 6px;
+        margin: 6px 0 0 13px;
+        display: flex;
+        align-content: center;
+      }
+      svg {
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
+        color: lightgray;
+      }
+    }
+  }
 }
-@media screen and (min-width: 992px) and (max-width: 1199px) {
+@media (max-width: 1200px) {
   .sliderButton {
     display: none;
   }
-  .imageDiv {
-    height: 180px;
-    overflow: hidden;
-    width: 980px;
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 991px) {
-  .sliderButton {
-    display: none;
+  .slideWrap {
+    width: calc(100% - 100px);
   }
 
   .imageDiv {
-    height: 180px;
-    overflow: hidden;
-    width: 750px;
-  }
-}
+    padding: 0 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
 
-@media screen and (max-width: 767px) {
-  .sliderButton {
-    display: none;
-  }
+    .slideImage {
+      width: calc(100vw - 100px);
+    }
 
-  .imageDiv {
-    height: 180px;
-    overflow: hidden;
-    width: 750px;
+    .active-infomation {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    h2 {
+      margin-top: 20px;
+      font-size: 18px;
+      line-height: 1;
+      font-weight: 700;
+      color: #333;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    h3 {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.15;
+      color: #666;
+      width: "auto";
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    hr {
+      display: none;
+    }
+    a {
+      span {
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1;
+        color: #36f;
+        margin-top: 6px;
+        padding: 6px 8px;
+        display: flex;
+        align-content: center;
+      }
+      svg {
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
+        color: lightgray;
+      }
+    }
   }
 }
