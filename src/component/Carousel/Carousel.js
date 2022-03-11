@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import styles from "./Carousel.module.css";
+import styles from "./Carousel.module.scss";
 import data from "assets/data.json";
 import { LeftButton } from "assets/LeftButton";
 import { RightButton } from "assets/RightButton";
@@ -192,7 +192,9 @@ const Carousel = () => {
                     <div
                       className={
                         (slideState.number % carouselData.length) + 1 !==
-                          data.id && `${styles["unactive-slideImage"]}`
+                        data.id
+                          ? `${styles["unactive-slideImage"]}`
+                          : undefined
                       }
                     />
 
