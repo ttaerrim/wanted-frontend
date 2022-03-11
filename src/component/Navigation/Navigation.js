@@ -1,26 +1,26 @@
 import React from "react";
-import "./Navigation.css";
+import styles from "./Navigation.module.scss";
 const Navigation = () => {
   return (
-    <div className="NavBox">
-      <div className="NavBar">
-        <nav className="MainBar">
-          <div className="MainBar__logo">
-            <div className="menu">
+    <div className={styles.NavBox}>
+      <div className={styles.NavBar}>
+        <nav className={styles.MainBar}>
+          <div className={styles.MainBar__logo}>
+            <div className={styles.menu}>
               <img
-                className="hamburger"
+                className={styles.hamburger}
                 src="https://static.wanted.co.kr/images/icon-menu.png"
               />
               <a href="#">
                 <img
-                  className="wanted"
+                  className={styles.wanted}
                   src="//theme.zdassets.com/theme_assets/9309779/480a35976bf401a88dd7388d8f5c19d77227cd35.png"
                 ></img>
               </a>
             </div>
           </div>
-          <ul className="MainBar__class">
-            <li className="xsOnly selected">
+          <ul className={styles.MainBar__class}>
+            <li className={`${styles.xsOnly} ${styles.selected}`}>
               <a href="">홈</a>
             </li>
             <li>
@@ -29,13 +29,13 @@ const Navigation = () => {
             <li>
               <a href="">이벤트</a>
             </li>
-            <li className="smMoreVisible">
+            <li className={styles.smMoreVisible}>
               <a href="">직군별 연봉</a>
             </li>
-            <li className="smMoreVisible">
+            <li className={styles.smMoreVisible}>
               <a href="">이력서</a>
             </li>
-            <li className="smMoreVisible">
+            <li className={styles.smMoreVisible}>
               <a href="">
                 커뮤니티
                 <em>
@@ -76,10 +76,10 @@ const Navigation = () => {
                 </em>
               </a>
             </li>
-            <li className="smMoreVisible">
+            <li className={styles.smMoreVisible}>
               <a href="">프리랜서</a>
             </li>
-            <li className="smMoreVisible">
+            <li className={styles.smMoreVisible}>
               <a href="">
                 AI 합격예측
                 <span>
@@ -121,10 +121,10 @@ const Navigation = () => {
               </a>
             </li>
           </ul>
-          <aside className="MainBar__icons">
+          <aside className={styles.MainBar__icons}>
             <ul>
               <li>
-                <button className="MainBar__icons__search">
+                <button className={styles.MainBar__icons__search}>
                   <svg
                     xmlns="https://www.w3.org/2000/svg"
                     xmlnsXlink="https://www.w3.org/1999/xlink"
@@ -151,7 +151,7 @@ const Navigation = () => {
                 </button>
               </li>
               <li>
-                <button className="MainBar__icons__notify">
+                <button className={styles.MainBar__icons__notify}>
                   <svg
                     xmlns="https://www.w3.org/2000/svg"
                     xmlnsXlink="https://www.w3.org/1999/xlink"
@@ -184,20 +184,20 @@ const Navigation = () => {
                   </svg>
                 </button>
               </li>
-              <li className="mdMoreVisible">
-                <button type="button" className="profileButton">
-                  <div className="avatarBorder">
+              <li className={styles.mdMoreVisible}>
+                <button type="button" className={styles.profileButton}>
+                  <div className={styles.avatarBorder}>
                     <img src="https://static.wanted.co.kr/images/profile_default.png"></img>
                   </div>
                 </button>
               </li>
-              <li className="mdMoreVisible leftDivision">
-                <a className="dashboardButton" href="#">
+              <li className={`${styles.mdMoreVisible} ${styles.leftDivision}`}>
+                <a className={styles.dashboardButton} href="#">
                   기업 서비스
                 </a>
               </li>
-              <li className="Aside_visibleMenu">
-                <button className="menuButton" type="button">
+              <li className={styles.Aside_visibleMenu}>
+                <button className={styles.menuButton} type="button">
                   <svg
                     width="18"
                     height="18"
