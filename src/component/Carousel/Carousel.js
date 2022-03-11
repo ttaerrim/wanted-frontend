@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import styles from "./Carousel.module.scss";
 import data from "assets/data.json";
 import { LeftButton } from "assets/LeftButton";
@@ -127,6 +127,9 @@ const Carousel = () => {
   };
 
   const [width, height] = useWindowSize();
+  useLayoutEffect(() => {
+    setImgWidth(imgRef.current?.width);
+  }, [width, height]);
 
   useEffect(() => {
     const dragSpace = Math.abs(mouseDownClientX - mouseUpClientX);
@@ -150,14 +153,18 @@ const Carousel = () => {
     slideRef.current.style.transition = slideState.hasMotion
       ? "all 500ms ease 0s"
       : "";
-  }, [slideState, imgWidth, width, height]);
+  }, [slideState, imgWidth]);
 
   useEffect(() => {
+    let nButton;
     if (!isButtonActive) {
       setTimeout(() => {
-        setIsButtonActive(true);
+        nButton = setIsButtonActive(true);
       }, 500);
     }
+    return () => {
+      clearTimeout(nButton);
+    };
   }, [isButtonActive]);
 
   useEffect(() => {
