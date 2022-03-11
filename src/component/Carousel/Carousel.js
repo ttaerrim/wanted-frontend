@@ -3,6 +3,7 @@ import styles from "./Carousel.module.scss";
 import data from "assets/data.json";
 import { LeftButton } from "assets/LeftButton";
 import { RightButton } from "assets/RightButton";
+import useWindowSize from "hooks/useWindowSize";
 
 const Carousel = () => {
   const carouselData = data.data;
@@ -125,7 +126,7 @@ const Carousel = () => {
     setCursorOn(false);
   };
 
-  // useEffect(() => {}, [window.innerWidth]);
+  const [width, height] = useWindowSize();
 
   useEffect(() => {
     const dragSpace = Math.abs(mouseDownClientX - mouseUpClientX);
@@ -149,7 +150,7 @@ const Carousel = () => {
     slideRef.current.style.transition = slideState.hasMotion
       ? "all 500ms ease 0s"
       : "";
-  }, [slideState, imgWidth]);
+  }, [slideState, imgWidth, width, height]);
 
   useEffect(() => {
     if (!isButtonActive) {
